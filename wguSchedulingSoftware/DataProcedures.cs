@@ -64,5 +64,30 @@ namespace wguSchedulingSoftware
 
 		}
 
+
+		public bool registerUser(User userInfo)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "INSERT INTO user(userName, password, active, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(@username, @password, @active, CURRENT_TIMESTAMP, @createdBy, CURRENT_TIMESTAMP, 'system') ";
+				cmd.Parameters.AddWithValue("@username", userInfo.username);
+				cmd.Parameters.AddWithValue("@password", userInfo.password);
+				cmd.Parameters.AddWithValue("@active", 1);
+				cmd.Parameters.AddWithValue("@createdBy", userInfo.username);
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Exceptoin thrown when registering user: " + ex);
+				return false;
+			}
+
+			return true;
+		}
+
 	}
 }

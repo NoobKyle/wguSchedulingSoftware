@@ -35,6 +35,7 @@
 			textBox1 = new TextBox();
 			textBox2 = new TextBox();
 			label4 = new Label();
+			button2 = new Button();
 			SuspendLayout();
 			// 
 			// button1
@@ -43,7 +44,7 @@
 			button1.Location = new Point(54, 240);
 			button1.Name = "button1";
 			button1.Size = new Size(75, 23);
-			button1.TabIndex = 0;
+			button1.TabIndex = 3;
 			button1.Text = "Login";
 			button1.UseVisualStyleBackColor = true;
 			button1.Click += button1_Click;
@@ -71,11 +72,12 @@
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			label3.ForeColor = Color.Brown;
-			label3.Location = new Point(39, 298);
+			label3.Location = new Point(49, 298);
 			label3.Name = "label3";
 			label3.Size = new Size(280, 15);
 			label3.TabIndex = 3;
 			label3.Text = "USER NOT FOUND OR INCORRECT PASSWORD";
+			label3.Visible = false;
 			// 
 			// textBox1
 			// 
@@ -89,7 +91,7 @@
 			textBox2.Location = new Point(49, 190);
 			textBox2.Name = "textBox2";
 			textBox2.Size = new Size(255, 23);
-			textBox2.TabIndex = 5;
+			textBox2.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -101,11 +103,23 @@
 			label4.TabIndex = 6;
 			label4.Text = "Welcome ";
 			// 
-			// Form1
+			// button2
+			// 
+			button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			button2.Location = new Point(190, 240);
+			button2.Name = "button2";
+			button2.Size = new Size(75, 23);
+			button2.TabIndex = 7;
+			button2.Text = "Register";
+			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
+			// 
+			// Login
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(355, 361);
+			Controls.Add(button2);
 			Controls.Add(label4);
 			Controls.Add(textBox2);
 			Controls.Add(textBox1);
@@ -113,7 +127,7 @@
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(button1);
-			Name = "Form1";
+			Name = "Login";
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "Scheduling Software";
 			Load += Form1_Load;
@@ -130,5 +144,6 @@
 		private TextBox textBox1;
 		private TextBox textBox2;
 		private Label label4;
+		private Button button2;
 	}
 }
