@@ -66,7 +66,7 @@ namespace wguSchedulingSoftware
 			{
 				DateTime dateTime = DateTime.Now;
 				this.Hide();
-				MainScreen mainScreen = new MainScreen();
+				MainScreen mainScreen = new MainScreen(userInfo);
 				mainScreen.Show();
 			}
 			else

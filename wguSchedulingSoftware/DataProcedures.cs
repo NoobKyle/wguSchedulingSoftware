@@ -89,5 +89,125 @@ namespace wguSchedulingSoftware
 			return true;
 		}
 
+
+		public int addCountry(Country country)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			int countryId = -1;
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "INSERT INTO country(country, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES (@country, CURRENT_TIMESTAMP, @createdBy, CURRENT_TIMESTAMP, 'system');" + "SELECT countryId FROM country ORDER BY countryId DESC LIMIT 1";
+				cmd.Parameters.AddWithValue("@country", country.country);
+				cmd.Parameters.AddWithValue("@createdBy", country.createdBy);
+				countryId = (int)cmd.ExecuteScalar();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Exception thrown when adding country: " + ex);
+				countryId = -1;
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return countryId;
+				
+		}
+
+
+
+		public int addCity(City city)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			int cityId = -1;
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "INSERT INTO city(city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES (@city, @countryId, CURRENT_TIMESTAMP, @createdBy, CURRENT_TIMESTAMP, 'system');" + "SELECT cityId FROM city ORDER BY cityId DESC LIMIT 1";
+				cmd.Parameters.AddWithValue("@city", city.city);
+				cmd.Parameters.AddWithValue("@countryId", city.countryId);
+				cmd.Parameters.AddWithValue("@createdBy", city.createdBy);
+				cityId = (int)cmd.ExecuteScalar();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Exeption thrown when adding city: " + ex);
+				cityId = -1;
+			}
+			finally { conn.Close(); }
+
+			return cityId;
+		}
+
+
+
+		public int addAddress(Address address)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			int addressId = -1;
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES (@address, 'na', @cityId, @postalCode, @phone, CURRENT_TIMESTAMP, @createdBy, CURRENT_TIMESTAMP, 'system');" + "SELECT addressId FROM address ORDER BY addressId DESC LIMIT 1";
+				cmd.Parameters.AddWithValue("@address", address.address);
+				cmd.Parameters.AddWithValue("@cityId", address.cityId);
+				cmd.Parameters.AddWithValue("@postalCode", address.postalCode);
+				cmd.Parameters.AddWithValue("@phone", address.phone);
+				cmd.Parameters.AddWithValue("@createdBy", address.createdBy);
+
+				addressId = (int)cmd.ExecuteScalar();
+
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				addressId = -1;
+			}
+			finally { conn.Close(); }
+
+			return addressId;
+
+		}
+
+
+		public bool addCustomer(Customer customer)
+		{
+			MySqlConnection con = new MySqlConnection(connectionString);
+
+			try
+			{
+				con.Open();
+				MySqlCommand cmd = con.CreateCommand();
+				cmd.CommandText = "INSERT INTO customer(customerName, addressId, active,createDate, createdBy, lastUpdate, lastUpdateBy) VALUES (@customerName,@addressId, @active, CURRENT_TIMESTAMP, @createdBy, CURRENT_TIMESTAMP, 'system')";
+				cmd.Parameters.AddWithValue("@customerName", customer.customerName);
+				cmd.Parameters.AddWithValue("@addressId", customer.addressId);
+				cmd.Parameters.AddWithValue("@active", 1);
+				cmd.Parameters.AddWithValue("@createdBy", customer.createdBy);
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				return false;
+			}
+			finally
+			{
+				con.Close();
+			}
+
+			return true;
+
+		}
 	}
 }

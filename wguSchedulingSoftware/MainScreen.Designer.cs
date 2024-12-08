@@ -32,12 +32,12 @@
 			label2 = new Label();
 			label3 = new Label();
 			label4 = new Label();
-			button1 = new Button();
-			button2 = new Button();
-			button3 = new Button();
-			button4 = new Button();
-			button5 = new Button();
-			button6 = new Button();
+			createbtn = new Button();
+			updatebtn = new Button();
+			deletebtn = new Button();
+			numberOfAppointmentsbtn = new Button();
+			consultantsSchedulesbtn = new Button();
+			customerReportsbtn = new Button();
 			button7 = new Button();
 			button8 = new Button();
 			button9 = new Button();
@@ -90,59 +90,60 @@
 			label4.TabIndex = 3;
 			label4.Text = "Appointment Calendar";
 			// 
-			// button1
+			// createbtn
 			// 
-			button1.Location = new Point(33, 163);
-			button1.Name = "button1";
-			button1.Size = new Size(90, 23);
-			button1.TabIndex = 4;
-			button1.Text = "button1";
-			button1.UseVisualStyleBackColor = true;
+			createbtn.Location = new Point(33, 163);
+			createbtn.Name = "createbtn";
+			createbtn.Size = new Size(90, 23);
+			createbtn.TabIndex = 4;
+			createbtn.Text = "Create";
+			createbtn.UseVisualStyleBackColor = true;
+			createbtn.Click += createbtn_Click;
 			// 
-			// button2
+			// updatebtn
 			// 
-			button2.Location = new Point(33, 216);
-			button2.Name = "button2";
-			button2.Size = new Size(90, 23);
-			button2.TabIndex = 5;
-			button2.Text = "button2";
-			button2.UseVisualStyleBackColor = true;
+			updatebtn.Location = new Point(33, 216);
+			updatebtn.Name = "updatebtn";
+			updatebtn.Size = new Size(90, 23);
+			updatebtn.TabIndex = 5;
+			updatebtn.Text = "Update";
+			updatebtn.UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// deletebtn
 			// 
-			button3.Location = new Point(33, 272);
-			button3.Name = "button3";
-			button3.Size = new Size(90, 23);
-			button3.TabIndex = 6;
-			button3.Text = "button3";
-			button3.UseVisualStyleBackColor = true;
+			deletebtn.Location = new Point(33, 272);
+			deletebtn.Name = "deletebtn";
+			deletebtn.Size = new Size(90, 23);
+			deletebtn.TabIndex = 6;
+			deletebtn.Text = "Delete";
+			deletebtn.UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// numberOfAppointmentsbtn
 			// 
-			button4.Location = new Point(176, 163);
-			button4.Name = "button4";
-			button4.Size = new Size(180, 23);
-			button4.TabIndex = 7;
-			button4.Text = "button4";
-			button4.UseVisualStyleBackColor = true;
+			numberOfAppointmentsbtn.Location = new Point(176, 163);
+			numberOfAppointmentsbtn.Name = "numberOfAppointmentsbtn";
+			numberOfAppointmentsbtn.Size = new Size(180, 23);
+			numberOfAppointmentsbtn.TabIndex = 7;
+			numberOfAppointmentsbtn.Text = "Number Of Appointments";
+			numberOfAppointmentsbtn.UseVisualStyleBackColor = true;
 			// 
-			// button5
+			// consultantsSchedulesbtn
 			// 
-			button5.Location = new Point(176, 216);
-			button5.Name = "button5";
-			button5.Size = new Size(180, 23);
-			button5.TabIndex = 8;
-			button5.Text = "button5";
-			button5.UseVisualStyleBackColor = true;
+			consultantsSchedulesbtn.Location = new Point(176, 216);
+			consultantsSchedulesbtn.Name = "consultantsSchedulesbtn";
+			consultantsSchedulesbtn.Size = new Size(180, 23);
+			consultantsSchedulesbtn.TabIndex = 8;
+			consultantsSchedulesbtn.Text = "Consultant Schedules";
+			consultantsSchedulesbtn.UseVisualStyleBackColor = true;
 			// 
-			// button6
+			// customerReportsbtn
 			// 
-			button6.Location = new Point(176, 272);
-			button6.Name = "button6";
-			button6.Size = new Size(180, 23);
-			button6.TabIndex = 9;
-			button6.Text = "button6";
-			button6.UseVisualStyleBackColor = true;
+			customerReportsbtn.Location = new Point(176, 272);
+			customerReportsbtn.Name = "customerReportsbtn";
+			customerReportsbtn.Size = new Size(180, 23);
+			customerReportsbtn.TabIndex = 9;
+			customerReportsbtn.Text = "Customer Reports";
+			customerReportsbtn.UseVisualStyleBackColor = true;
 			// 
 			// button7
 			// 
@@ -150,7 +151,7 @@
 			button7.Name = "button7";
 			button7.Size = new Size(75, 23);
 			button7.TabIndex = 10;
-			button7.Text = "button7";
+			button7.Text = "Add";
 			button7.UseVisualStyleBackColor = true;
 			// 
 			// button8
@@ -159,7 +160,7 @@
 			button8.Name = "button8";
 			button8.Size = new Size(75, 23);
 			button8.TabIndex = 11;
-			button8.Text = "button8";
+			button8.Text = "Update";
 			button8.UseVisualStyleBackColor = true;
 			// 
 			// button9
@@ -168,7 +169,7 @@
 			button9.Name = "button9";
 			button9.Size = new Size(75, 23);
 			button9.TabIndex = 12;
-			button9.Text = "button9";
+			button9.Text = "Delete";
 			button9.UseVisualStyleBackColor = true;
 			button9.Click += button9_Click;
 			// 
@@ -179,7 +180,7 @@
 			checkBox1.Name = "checkBox1";
 			checkBox1.Size = new Size(83, 19);
 			checkBox1.TabIndex = 13;
-			checkBox1.Text = "checkBox1";
+			checkBox1.Text = "Week View";
 			checkBox1.UseVisualStyleBackColor = true;
 			// 
 			// checkBox2
@@ -187,9 +188,9 @@
 			checkBox2.AutoSize = true;
 			checkBox2.Location = new Point(746, 163);
 			checkBox2.Name = "checkBox2";
-			checkBox2.Size = new Size(83, 19);
+			checkBox2.Size = new Size(90, 19);
 			checkBox2.TabIndex = 14;
-			checkBox2.Text = "checkBox2";
+			checkBox2.Text = "Month View";
 			checkBox2.UseVisualStyleBackColor = true;
 			checkBox2.CheckedChanged += checkBox2_CheckedChanged;
 			// 
@@ -212,12 +213,12 @@
 			Controls.Add(button9);
 			Controls.Add(button8);
 			Controls.Add(button7);
-			Controls.Add(button6);
-			Controls.Add(button5);
-			Controls.Add(button4);
-			Controls.Add(button3);
-			Controls.Add(button2);
-			Controls.Add(button1);
+			Controls.Add(customerReportsbtn);
+			Controls.Add(consultantsSchedulesbtn);
+			Controls.Add(numberOfAppointmentsbtn);
+			Controls.Add(deletebtn);
+			Controls.Add(updatebtn);
+			Controls.Add(createbtn);
 			Controls.Add(label4);
 			Controls.Add(label3);
 			Controls.Add(label2);
@@ -237,12 +238,12 @@
 		private Label label2;
 		private Label label3;
 		private Label label4;
-		private Button button1;
-		private Button button2;
-		private Button button3;
-		private Button button4;
-		private Button button5;
-		private Button button6;
+		private Button createbtn;
+		private Button updatebtn;
+		private Button deletebtn;
+		private Button numberOfAppointmentsbtn;
+		private Button consultantsSchedulesbtn;
+		private Button customerReportsbtn;
 		private Button button7;
 		private Button button8;
 		private Button button9;
