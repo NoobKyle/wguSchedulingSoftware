@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using wguSchedulingSoftware.DataModels;
@@ -209,5 +210,56 @@ namespace wguSchedulingSoftware
 			return true;
 
 		}
+
+
+		public CustomerInformation getCustomerInformation(int customerId)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			CustomerInformation custInfo = new CustomerInformation();
+
+			try
+			{
+				conn.Open();
+				string query = "SELECT customer.customerName, address.phone, address.address, address.address2, address.postalCode, city.city, country.country FROM customer " +
+					"LEFT JOIN address ON customer.addressId = address.addressId " +
+					"LEFT JOIN city ON address.cityId = city.cityId " +
+					"LEFT JOIN country ON city.countryId = country.countryId " +
+					"WHERE customer.customerId = @custId";
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@custId", customerId);
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						custInfo.customerName = reader["customerName"].ToString();
+						custInfo.address = reader["address"].ToString();
+						custInfo.city = reader["city"].ToString();
+						custInfo.postalCode = reader["postalCode"].ToString();
+						custInfo.country = reader["country"].ToString();
+						custInfo.phone = reader["phone"].ToString();
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
+			finally { conn.Close(); }
+
+			return custInfo;
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
 	}
 }
