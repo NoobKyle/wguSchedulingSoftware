@@ -75,5 +75,12 @@ namespace wguSchedulingSoftware
 			deleteCustomer.Show();
 			this.Hide();
 		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			AddAppointment addapt = new AddAppointment(currentUser);
+			this.Hide();
+			addapt.Show();
+		}
 	}
 }

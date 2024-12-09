@@ -320,8 +320,41 @@ namespace wguSchedulingSoftware
 		}
 
 
+		public int addAppointment(Appointment appt)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
 
+			int apptId = -1;
 
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "INSERT INTO appointment(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy ) VALUES(@customerId, @userId, @title, @description, @location, @contact, @type, @url, @start, @end, CURRENT_TIMESTAMP, 'user', CURRENT_TIMESTAMP, 'system');" +
+					"SELECT appointmentId FROM appointment ORDER BY appointmentId DESC LIMIT 1";
+				cmd.Parameters.AddWithValue("@customerId", appt.customerId);
+				cmd.Parameters.AddWithValue("@userId", appt.userId);
+				cmd.Parameters.AddWithValue("@title", appt.title);
+				cmd.Parameters.AddWithValue("@description", appt.description);
+				cmd.Parameters.AddWithValue("@location", appt.location);
+				cmd.Parameters.AddWithValue("@contact", appt.contact);
+				cmd.Parameters.AddWithValue("@type", appt.type);
+				cmd.Parameters.AddWithValue("@url", appt.url);
+				cmd.Parameters.AddWithValue("@start", appt.start);
+				cmd.Parameters.AddWithValue("@end", appt.end);
+				apptId = (int)cmd.ExecuteScalar();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return apptId;
+		}
 
 	}
 }
