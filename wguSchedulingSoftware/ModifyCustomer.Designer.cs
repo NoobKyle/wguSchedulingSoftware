@@ -78,6 +78,7 @@
 			cancelbtn.TabIndex = 34;
 			cancelbtn.Text = "Cancel";
 			cancelbtn.UseVisualStyleBackColor = true;
+			cancelbtn.Click += cancelbtn_Click;
 			// 
 			// createbtn
 			// 
@@ -87,6 +88,7 @@
 			createbtn.TabIndex = 33;
 			createbtn.Text = "Modify";
 			createbtn.UseVisualStyleBackColor = true;
+			createbtn.Click += createbtn_Click;
 			// 
 			// countrytb
 			// 

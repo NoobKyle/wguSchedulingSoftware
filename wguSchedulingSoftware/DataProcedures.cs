@@ -252,10 +252,72 @@ namespace wguSchedulingSoftware
 		}
 
 
+		public bool saveCustomerInformation(CustomerInformation custInfo)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			bool success = false;
+
+			try
+			{
+				conn.Open();
+				string updateCommand = "UPDATE customer SET customerName = @customerName WHERE customerId = @customerId; " +
+					"UPDATE address SET address = @address, address2 = @address2, postalCode = @postalCode, phone = @phone " +
+					"WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId); " +
+					"UPDATE city SET city = @city " +
+					"WHERE cityId = (SELECT cityId FROM address WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId)); " +
+					"UPDATE country SET country = @country " +
+					"WHERE countryId = (SELECT countryId FROM city WHERE cityId = (SELECT cityId FROM address WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId)))";
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = updateCommand;
+				cmd.Parameters.AddWithValue("@customerId", custInfo.customerID);
+				cmd.Parameters.AddWithValue("@customerName", custInfo.customerName);
+				cmd.Parameters.AddWithValue("@address", custInfo.address);
+				cmd.Parameters.AddWithValue("@address2", "na");
+				cmd.Parameters.AddWithValue("@city", custInfo.city);
+				cmd.Parameters.AddWithValue("@postalCode", custInfo.postalCode);
+				cmd.Parameters.AddWithValue("@country", custInfo.country);
+				cmd.Parameters.AddWithValue("@phone", custInfo.phone);
+				cmd.ExecuteNonQuery();
+
+				success = true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				success = false;
+			}
+			finally { conn.Close(); }
+
+			return success;
+
+		}
 
 
+		public bool deleteCustomer(int customerID)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
 
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "DELETE FROM customer WHERE customerId = @customerId";
+				cmd.Parameters.AddWithValue("@customerId", customerID);
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				return false;
+			}
+			finally
+			{
+				conn.Close();
+			}
 
+			return true;
+		}
 
 
 

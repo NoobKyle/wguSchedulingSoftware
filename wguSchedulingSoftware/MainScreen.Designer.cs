@@ -118,6 +118,7 @@
 			deletebtn.TabIndex = 6;
 			deletebtn.Text = "Delete";
 			deletebtn.UseVisualStyleBackColor = true;
+			deletebtn.Click += deletebtn_Click;
 			// 
 			// numberOfAppointmentsbtn
 			// 

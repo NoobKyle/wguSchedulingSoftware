@@ -41,5 +41,80 @@ namespace wguSchedulingSoftware
 			countrytb.Text = custInfo.country;
 			citytb.Text = custInfo.city;
 		}
+
+		private void cancelbtn_Click(object sender, EventArgs e)
+		{
+			MainScreen mainScreen = new MainScreen(currentUser);
+			this.Close();
+			mainScreen.Show();
+		}
+
+		private void createbtn_Click(object sender, EventArgs e)
+		{
+			bool textBoxesNotEmpty;
+
+			if (string.IsNullOrWhiteSpace(nametb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(phonetb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(addresstb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(addresstb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(citytb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(zipcodetb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else if (string.IsNullOrWhiteSpace(countrytb.Text))
+			{
+				textBoxesNotEmpty = false;
+			}
+			else
+			{
+				textBoxesNotEmpty = true;
+			}
+
+			if (textBoxesNotEmpty)
+			{
+				DataProcedures data = new DataProcedures();
+
+				CustomerInformation custInfo = new CustomerInformation();
+				int custId = int.Parse(searchtb.Text);
+
+				custInfo.customerID = custId;
+				custInfo.customerName = nametb.Text;
+				custInfo.phone = phonetb.Text;
+				custInfo.address = addresstb.Text;
+				custInfo.address2 = "na";
+				custInfo.city = citytb.Text;
+				custInfo.postalCode = zipcodetb.Text;
+				custInfo.country = countrytb.Text;
+
+				bool insertCustomerInfo = data.saveCustomerInformation(custInfo);
+
+				if (insertCustomerInfo)
+				{
+					MainScreen mainScreen = new MainScreen(currentUser);
+					this.Hide();
+					mainScreen.Show();
+				}
+			}
+			else
+			{
+				label1.Text = "Enter text in all fields";
+			}
+		}
 	}
 }
