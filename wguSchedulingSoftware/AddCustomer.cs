@@ -18,7 +18,7 @@ namespace wguSchedulingSoftware
 		public AddCustomer(User user)
 		{
 			InitializeComponent();
-			currentUser = user;
+			currentUser = new User();
 			currentUser.username = user.username;
 		}
 
@@ -107,6 +107,13 @@ namespace wguSchedulingSoftware
 				label1.Text = "Fill all Fields";
 			}
 
+		}
+
+		private void cancelbtn_Click(object sender, EventArgs e)
+		{
+			MainScreen mainScreen = new MainScreen(currentUser);
+			this.Hide();
+			mainScreen.Show();
 		}
 	}
 }

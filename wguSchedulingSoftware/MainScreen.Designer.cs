@@ -108,6 +108,7 @@
 			updatebtn.TabIndex = 5;
 			updatebtn.Text = "Update";
 			updatebtn.UseVisualStyleBackColor = true;
+			updatebtn.Click += updatebtn_Click;
 			// 
 			// deletebtn
 			// 
@@ -117,6 +118,7 @@
 			deletebtn.TabIndex = 6;
 			deletebtn.Text = "Delete";
 			deletebtn.UseVisualStyleBackColor = true;
+			deletebtn.Click += deletebtn_Click;
 			// 
 			// numberOfAppointmentsbtn
 			// 

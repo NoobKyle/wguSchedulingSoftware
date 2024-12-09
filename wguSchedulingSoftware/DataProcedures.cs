@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using wguSchedulingSoftware.DataModels;
@@ -209,5 +210,118 @@ namespace wguSchedulingSoftware
 			return true;
 
 		}
+
+
+		public CustomerInformation getCustomerInformation(int customerId)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			CustomerInformation custInfo = new CustomerInformation();
+
+			try
+			{
+				conn.Open();
+				string query = "SELECT customer.customerName, address.phone, address.address, address.address2, address.postalCode, city.city, country.country FROM customer " +
+					"LEFT JOIN address ON customer.addressId = address.addressId " +
+					"LEFT JOIN city ON address.cityId = city.cityId " +
+					"LEFT JOIN country ON city.countryId = country.countryId " +
+					"WHERE customer.customerId = @custId";
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@custId", customerId);
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						custInfo.customerName = reader["customerName"].ToString();
+						custInfo.address = reader["address"].ToString();
+						custInfo.city = reader["city"].ToString();
+						custInfo.postalCode = reader["postalCode"].ToString();
+						custInfo.country = reader["country"].ToString();
+						custInfo.phone = reader["phone"].ToString();
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
+			finally { conn.Close(); }
+
+			return custInfo;
+			
+		}
+
+
+		public bool saveCustomerInformation(CustomerInformation custInfo)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			bool success = false;
+
+			try
+			{
+				conn.Open();
+				string updateCommand = "UPDATE customer SET customerName = @customerName WHERE customerId = @customerId; " +
+					"UPDATE address SET address = @address, address2 = @address2, postalCode = @postalCode, phone = @phone " +
+					"WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId); " +
+					"UPDATE city SET city = @city " +
+					"WHERE cityId = (SELECT cityId FROM address WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId)); " +
+					"UPDATE country SET country = @country " +
+					"WHERE countryId = (SELECT countryId FROM city WHERE cityId = (SELECT cityId FROM address WHERE addressId = (SELECT addressId FROM customer WHERE customerId = @customerId)))";
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = updateCommand;
+				cmd.Parameters.AddWithValue("@customerId", custInfo.customerID);
+				cmd.Parameters.AddWithValue("@customerName", custInfo.customerName);
+				cmd.Parameters.AddWithValue("@address", custInfo.address);
+				cmd.Parameters.AddWithValue("@address2", "na");
+				cmd.Parameters.AddWithValue("@city", custInfo.city);
+				cmd.Parameters.AddWithValue("@postalCode", custInfo.postalCode);
+				cmd.Parameters.AddWithValue("@country", custInfo.country);
+				cmd.Parameters.AddWithValue("@phone", custInfo.phone);
+				cmd.ExecuteNonQuery();
+
+				success = true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				success = false;
+			}
+			finally { conn.Close(); }
+
+			return success;
+
+		}
+
+
+		public bool deleteCustomer(int customerID)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "DELETE FROM customer WHERE customerId = @customerId";
+				cmd.Parameters.AddWithValue("@customerId", customerID);
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				return false;
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return true;
+		}
+
+
+
+
+
 	}
 }

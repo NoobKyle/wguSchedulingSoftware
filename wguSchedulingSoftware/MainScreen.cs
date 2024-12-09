@@ -61,5 +61,19 @@ namespace wguSchedulingSoftware
 			AddCustomer addCust = new AddCustomer(currentUser);
 			addCust.Show();
 		}
+
+		private void updatebtn_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			ModifyCustomer modifyCust = new ModifyCustomer(currentUser);
+			modifyCust.Show();
+		}
+
+		private void deletebtn_Click(object sender, EventArgs e)
+		{
+			DeleteCustomer deleteCustomer = new DeleteCustomer(currentUser);
+			deleteCustomer.Show();
+			this.Hide();
+		}
 	}
 }

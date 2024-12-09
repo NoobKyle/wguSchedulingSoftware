@@ -183,6 +183,7 @@
 			cancelbtn.TabIndex = 17;
 			cancelbtn.Text = "Cancel";
 			cancelbtn.UseVisualStyleBackColor = true;
+			cancelbtn.Click += cancelbtn_Click;
 			// 
 			// yescb
 			// 
