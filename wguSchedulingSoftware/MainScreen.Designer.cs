@@ -155,6 +155,7 @@
 			button7.TabIndex = 10;
 			button7.Text = "Add";
 			button7.UseVisualStyleBackColor = true;
+			button7.Click += button7_Click;
 			// 
 			// button8
 			// 
@@ -164,6 +165,7 @@
 			button8.TabIndex = 11;
 			button8.Text = "Update";
 			button8.UseVisualStyleBackColor = true;
+			button8.Click += button8_Click;
 			// 
 			// button9
 			// 

@@ -42,7 +42,9 @@ namespace wguSchedulingSoftware
 
 		private void button9_Click(object sender, EventArgs e)
 		{
-
+			DeleteAppointment deleteAppointment = new DeleteAppointment(currentUser);
+			this.Close();
+			deleteAppointment.Show();
 		}
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -74,6 +76,20 @@ namespace wguSchedulingSoftware
 			DeleteCustomer deleteCustomer = new DeleteCustomer(currentUser);
 			deleteCustomer.Show();
 			this.Hide();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			AddAppointment addapt = new AddAppointment(currentUser);
+			this.Hide();
+			addapt.Show();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			this.Close();
+			ModifyAppointment modifyAppointment = new ModifyAppointment(currentUser);
+			modifyAppointment.Show();
 		}
 	}
 }
