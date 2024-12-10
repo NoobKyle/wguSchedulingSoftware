@@ -165,6 +165,7 @@
 			button8.TabIndex = 11;
 			button8.Text = "Update";
 			button8.UseVisualStyleBackColor = true;
+			button8.Click += button8_Click;
 			// 
 			// button9
 			// 

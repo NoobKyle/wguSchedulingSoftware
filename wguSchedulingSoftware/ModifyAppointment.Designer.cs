@@ -1,6 +1,6 @@
 ﻿namespace wguSchedulingSoftware
 {
-	partial class AddAppointment
+	partial class ModifyAppointment
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,6 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			endDatetb = new DateTimePicker();
+			startdatetb = new DateTimePicker();
+			label12 = new Label();
+			descriptiontb = new TextBox();
+			searchCustomerlbl = new Label();
+			label11 = new Label();
+			searchtb = new TextBox();
+			searchbtn = new Button();
+			label9 = new Label();
 			cancelbtn = new Button();
 			createbtn = new Button();
 			urltb = new TextBox();
@@ -43,160 +52,71 @@
 			label3 = new Label();
 			label2 = new Label();
 			label1 = new Label();
-			searchtb = new TextBox();
-			searchbtn = new Button();
-			label9 = new Label();
-			searchCustomerlbl = new Label();
-			label11 = new Label();
-			descriptiontb = new TextBox();
-			label12 = new Label();
-			startdatetb = new DateTimePicker();
-			endDatetb = new DateTimePicker();
 			SuspendLayout();
 			// 
-			// cancelbtn
+			// endDatetb
 			// 
-			cancelbtn.Location = new Point(251, 555);
-			cancelbtn.Name = "cancelbtn";
-			cancelbtn.Size = new Size(75, 30);
-			cancelbtn.TabIndex = 11;
-			cancelbtn.Text = "Cancel";
-			cancelbtn.UseVisualStyleBackColor = true;
-			cancelbtn.Click += cancelbtn_Click;
+			endDatetb.Location = new Point(107, 498);
+			endDatetb.Name = "endDatetb";
+			endDatetb.Size = new Size(212, 23);
+			endDatetb.TabIndex = 58;
 			// 
-			// createbtn
+			// startdatetb
 			// 
-			createbtn.Location = new Point(64, 555);
-			createbtn.Name = "createbtn";
-			createbtn.Size = new Size(75, 30);
-			createbtn.TabIndex = 10;
-			createbtn.Text = "Create";
-			createbtn.UseVisualStyleBackColor = true;
-			createbtn.Click += createbtn_Click;
+			startdatetb.Location = new Point(107, 450);
+			startdatetb.Name = "startdatetb";
+			startdatetb.Size = new Size(212, 23);
+			startdatetb.TabIndex = 57;
 			// 
-			// urltb
+			// label12
 			// 
-			urltb.Location = new Point(114, 398);
-			urltb.Name = "urltb";
-			urltb.Size = new Size(212, 23);
-			urltb.TabIndex = 6;
+			label12.AutoSize = true;
+			label12.Location = new Point(31, 498);
+			label12.Name = "label12";
+			label12.Size = new Size(60, 15);
+			label12.TabIndex = 73;
+			label12.Text = "End Date :";
 			// 
-			// contacttb
+			// descriptiontb
 			// 
-			contacttb.Location = new Point(114, 349);
-			contacttb.Name = "contacttb";
-			contacttb.Size = new Size(212, 23);
-			contacttb.TabIndex = 5;
+			descriptiontb.Location = new Point(365, 211);
+			descriptiontb.Multiline = true;
+			descriptiontb.Name = "descriptiontb";
+			descriptiontb.ScrollBars = ScrollBars.Vertical;
+			descriptiontb.Size = new Size(610, 352);
+			descriptiontb.TabIndex = 59;
 			// 
-			// locationtb
+			// searchCustomerlbl
 			// 
-			locationtb.Location = new Point(114, 305);
-			locationtb.Name = "locationtb";
-			locationtb.Size = new Size(212, 23);
-			locationtb.TabIndex = 4;
+			searchCustomerlbl.AutoSize = true;
+			searchCustomerlbl.Location = new Point(183, 113);
+			searchCustomerlbl.Name = "searchCustomerlbl";
+			searchCustomerlbl.Size = new Size(22, 15);
+			searchCustomerlbl.TabIndex = 72;
+			searchCustomerlbl.Text = "Na";
 			// 
-			// typetb
+			// label11
 			// 
-			typetb.Location = new Point(114, 260);
-			typetb.Name = "typetb";
-			typetb.Size = new Size(212, 23);
-			typetb.TabIndex = 3;
-			// 
-			// titletb
-			// 
-			titletb.Location = new Point(38, 211);
-			titletb.Name = "titletb";
-			titletb.Size = new Size(288, 23);
-			titletb.TabIndex = 2;
-			// 
-			// label8
-			// 
-			label8.AutoSize = true;
-			label8.Location = new Point(372, 183);
-			label8.Name = "label8";
-			label8.Size = new Size(73, 15);
-			label8.TabIndex = 25;
-			label8.Text = "Description :";
-			// 
-			// label7
-			// 
-			label7.AutoSize = true;
-			label7.Location = new Point(38, 456);
-			label7.Name = "label7";
-			label7.Size = new Size(64, 15);
-			label7.TabIndex = 24;
-			label7.Text = "Start Date :";
-			// 
-			// label6
-			// 
-			label6.AutoSize = true;
-			label6.Location = new Point(38, 406);
-			label6.Name = "label6";
-			label6.Size = new Size(31, 15);
-			label6.TabIndex = 23;
-			label6.Text = "Url : ";
-			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Location = new Point(38, 352);
-			label5.Name = "label5";
-			label5.Size = new Size(55, 15);
-			label5.TabIndex = 22;
-			label5.Text = "Contact :";
-			label5.Click += label5_Click;
-			// 
-			// label4
-			// 
-			label4.AutoSize = true;
-			label4.Location = new Point(38, 308);
-			label4.Name = "label4";
-			label4.Size = new Size(62, 15);
-			label4.TabIndex = 21;
-			label4.Text = "Location : ";
-			// 
-			// label3
-			// 
-			label3.AutoSize = true;
-			label3.Location = new Point(36, 263);
-			label3.Name = "label3";
-			label3.Size = new Size(37, 15);
-			label3.TabIndex = 20;
-			label3.Text = "Type :";
-			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label2.Location = new Point(36, 177);
-			label2.Name = "label2";
-			label2.Size = new Size(54, 21);
-			label2.TabIndex = 19;
-			label2.Text = "Title : ";
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label1.Location = new Point(36, 26);
-			label1.Name = "label1";
-			label1.Size = new Size(182, 20);
-			label1.TabIndex = 18;
-			label1.Text = "Create New Appointment";
+			label11.AutoSize = true;
+			label11.Location = new Point(29, 113);
+			label11.Name = "label11";
+			label11.Size = new Size(82, 15);
+			label11.TabIndex = 71;
+			label11.Text = "Customer ID : ";
 			// 
 			// searchtb
 			// 
-			searchtb.Location = new Point(175, 64);
+			searchtb.Location = new Point(183, 64);
 			searchtb.Name = "searchtb";
 			searchtb.Size = new Size(191, 23);
-			searchtb.TabIndex = 0;
+			searchtb.TabIndex = 50;
 			// 
 			// searchbtn
 			// 
-			searchbtn.Location = new Point(372, 64);
+			searchbtn.Location = new Point(380, 64);
 			searchbtn.Name = "searchbtn";
 			searchbtn.Size = new Size(75, 23);
-			searchbtn.TabIndex = 1;
+			searchbtn.TabIndex = 51;
 			searchbtn.Text = "Search";
 			searchbtn.UseVisualStyleBackColor = true;
 			searchbtn.Click += searchbtn_Click;
@@ -205,68 +125,146 @@
 			// 
 			label9.AutoSize = true;
 			label9.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label9.Location = new Point(36, 67);
+			label9.Location = new Point(29, 67);
 			label9.Name = "label9";
-			label9.Size = new Size(133, 15);
-			label9.TabIndex = 41;
-			label9.Text = "Search For Customer ID";
+			label9.Size = new Size(153, 15);
+			label9.TabIndex = 70;
+			label9.Text = "Search For Appointment ID";
 			// 
-			// searchCustomerlbl
+			// cancelbtn
 			// 
-			searchCustomerlbl.AutoSize = true;
-			searchCustomerlbl.Location = new Point(190, 113);
-			searchCustomerlbl.Name = "searchCustomerlbl";
-			searchCustomerlbl.Size = new Size(22, 15);
-			searchCustomerlbl.TabIndex = 47;
-			searchCustomerlbl.Text = "Na";
+			cancelbtn.Location = new Point(244, 555);
+			cancelbtn.Name = "cancelbtn";
+			cancelbtn.Size = new Size(75, 30);
+			cancelbtn.TabIndex = 61;
+			cancelbtn.Text = "Cancel";
+			cancelbtn.UseVisualStyleBackColor = true;
+			cancelbtn.Click += cancelbtn_Click;
 			// 
-			// label11
+			// createbtn
 			// 
-			label11.AutoSize = true;
-			label11.Location = new Point(36, 113);
-			label11.Name = "label11";
-			label11.Size = new Size(103, 15);
-			label11.TabIndex = 46;
-			label11.Text = "Customer Name : ";
-			label11.Click += label11_Click;
+			createbtn.Location = new Point(57, 555);
+			createbtn.Name = "createbtn";
+			createbtn.Size = new Size(75, 30);
+			createbtn.TabIndex = 60;
+			createbtn.Text = "Modify";
+			createbtn.UseVisualStyleBackColor = true;
+			createbtn.Click += createbtn_Click;
 			// 
-			// descriptiontb
+			// urltb
 			// 
-			descriptiontb.Location = new Point(372, 211);
-			descriptiontb.Multiline = true;
-			descriptiontb.Name = "descriptiontb";
-			descriptiontb.ScrollBars = ScrollBars.Vertical;
-			descriptiontb.Size = new Size(610, 352);
-			descriptiontb.TabIndex = 9;
+			urltb.Location = new Point(107, 398);
+			urltb.Name = "urltb";
+			urltb.Size = new Size(212, 23);
+			urltb.TabIndex = 56;
 			// 
-			// label12
+			// contacttb
 			// 
-			label12.AutoSize = true;
-			label12.Location = new Point(38, 498);
-			label12.Name = "label12";
-			label12.Size = new Size(60, 15);
-			label12.TabIndex = 49;
-			label12.Text = "End Date :";
+			contacttb.Location = new Point(107, 349);
+			contacttb.Name = "contacttb";
+			contacttb.Size = new Size(212, 23);
+			contacttb.TabIndex = 55;
 			// 
-			// startdatetb
+			// locationtb
 			// 
-			startdatetb.Location = new Point(114, 450);
-			startdatetb.Name = "startdatetb";
-			startdatetb.Size = new Size(212, 23);
-			startdatetb.TabIndex = 7;
+			locationtb.Location = new Point(107, 305);
+			locationtb.Name = "locationtb";
+			locationtb.Size = new Size(212, 23);
+			locationtb.TabIndex = 54;
 			// 
-			// endDatetb
+			// typetb
 			// 
-			endDatetb.Location = new Point(114, 498);
-			endDatetb.Name = "endDatetb";
-			endDatetb.Size = new Size(212, 23);
-			endDatetb.TabIndex = 8;
+			typetb.Location = new Point(107, 260);
+			typetb.Name = "typetb";
+			typetb.Size = new Size(212, 23);
+			typetb.TabIndex = 53;
 			// 
-			// AddAppointment
+			// titletb
+			// 
+			titletb.Location = new Point(31, 211);
+			titletb.Name = "titletb";
+			titletb.Size = new Size(288, 23);
+			titletb.TabIndex = 52;
+			// 
+			// label8
+			// 
+			label8.AutoSize = true;
+			label8.Location = new Point(365, 183);
+			label8.Name = "label8";
+			label8.Size = new Size(73, 15);
+			label8.TabIndex = 69;
+			label8.Text = "Description :";
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Location = new Point(31, 456);
+			label7.Name = "label7";
+			label7.Size = new Size(64, 15);
+			label7.TabIndex = 68;
+			label7.Text = "Start Date :";
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Location = new Point(31, 406);
+			label6.Name = "label6";
+			label6.Size = new Size(31, 15);
+			label6.TabIndex = 67;
+			label6.Text = "Url : ";
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Location = new Point(31, 352);
+			label5.Name = "label5";
+			label5.Size = new Size(55, 15);
+			label5.TabIndex = 66;
+			label5.Text = "Contact :";
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Location = new Point(31, 308);
+			label4.Name = "label4";
+			label4.Size = new Size(62, 15);
+			label4.TabIndex = 65;
+			label4.Text = "Location : ";
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Location = new Point(29, 263);
+			label3.Name = "label3";
+			label3.Size = new Size(37, 15);
+			label3.TabIndex = 64;
+			label3.Text = "Type :";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label2.Location = new Point(29, 177);
+			label2.Name = "label2";
+			label2.Size = new Size(54, 21);
+			label2.TabIndex = 63;
+			label2.Text = "Title : ";
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label1.Location = new Point(29, 26);
+			label1.Name = "label1";
+			label1.Size = new Size(152, 20);
+			label1.TabIndex = 62;
+			label1.Text = "Modify Appointment";
+			// 
+			// ModifyAppointment
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1001, 608);
+			ClientSize = new Size(1004, 611);
 			Controls.Add(endDatetb);
 			Controls.Add(startdatetb);
 			Controls.Add(label12);
@@ -291,14 +289,23 @@
 			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(label1);
-			Name = "AddAppointment";
-			Text = "AddAppointment";
-			Load += AddAppointment_Load;
+			Name = "ModifyAppointment";
+			Text = "ModifyAppointment";
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
+
+		private DateTimePicker endDatetb;
+		private DateTimePicker startdatetb;
+		private Label label12;
+		private TextBox descriptiontb;
+		private Label searchCustomerlbl;
+		private Label label11;
+		private TextBox searchtb;
+		private Button searchbtn;
+		private Label label9;
 		private Button cancelbtn;
 		private Button createbtn;
 		private TextBox urltb;
@@ -314,14 +321,5 @@
 		private Label label3;
 		private Label label2;
 		private Label label1;
-		private TextBox searchtb;
-		private Button searchbtn;
-		private Label label9;
-		private Label searchCustomerlbl;
-		private Label label11;
-		private TextBox descriptiontb;
-		private Label label12;
-		private DateTimePicker startdatetb;
-		private DateTimePicker endDatetb;
 	}
 }

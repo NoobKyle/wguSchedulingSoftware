@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using wguSchedulingSoftware.DataModels;
 
 namespace wguSchedulingSoftware
@@ -355,6 +356,126 @@ namespace wguSchedulingSoftware
 
 			return apptId;
 		}
+
+		public Appointment getAppointmentInformation(int apptId)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			Appointment apptInfo = new Appointment();
+
+			try
+			{
+				conn.Open();
+				string query = "SELECT customerId, userId, title, description, location, contact, type, url, start, end FROM appointment WHERE appointmentId = @appointmentId";
+				MySqlCommand cmd = new MySqlCommand(query, conn);
+				cmd.Parameters.AddWithValue("@appointmentId", apptId);
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						apptInfo.customerId = (int)reader["customerId"];
+						apptInfo.userId = (int)reader["userId"];
+						apptInfo.title = reader["title"].ToString();
+						apptInfo.description = reader["description"].ToString();
+						apptInfo.location = reader["location"].ToString();
+						apptInfo.contact = reader["contact"].ToString();
+						apptInfo.type = reader["type"].ToString();
+						apptInfo.url = reader["url"].ToString();
+						apptInfo.start = Convert.ToDateTime(reader["start"]);
+						apptInfo.end = Convert.ToDateTime(reader["end"]);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return apptInfo;
+		}
+
+
+
+		public bool updateAppointment(Appointment apptInfo)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			bool success = false;
+
+			try
+			{
+				conn.Open();
+				string updateCommand = "UPDATE appointment SET customerId = @customerId, userId = @userId, title = @title, description = @description, location = @location, " +
+					"contact = @contact, url = @url, start = @start, end = @end WHERE appointmentId = @appointmentId;";
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = updateCommand;
+				cmd.Parameters.AddWithValue("@appointmentId", apptInfo.appointmentId);
+				cmd.Parameters.AddWithValue("@customerId", apptInfo.customerId);
+				cmd.Parameters.AddWithValue("@userId", apptInfo.userId);
+				cmd.Parameters.AddWithValue("@title", apptInfo.title);
+				cmd.Parameters.AddWithValue("@description", apptInfo.description);
+				cmd.Parameters.AddWithValue("@location", apptInfo.location);
+				cmd.Parameters.AddWithValue("@contact", apptInfo.contact);
+				cmd.Parameters.AddWithValue("@type", apptInfo.type);
+				cmd.Parameters.AddWithValue("@url", apptInfo.url);
+				cmd.Parameters.AddWithValue("@start", apptInfo.start);
+				cmd.Parameters.AddWithValue("@end", apptInfo.end);
+				cmd.ExecuteNonQuery();
+
+				success = true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				success = false;
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return success;
+
+		}
+
+
+		public bool deleteAppointment(int apptId)
+		{
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "DELETE FROM appointment WHERE appointmentId = @appointmentId";
+				cmd.Parameters.AddWithValue("@appointmentId", apptId);
+				cmd.ExecuteNonQuery();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+
+			return true;
+
+
+		}
+
+
+
+
+
+
+
 
 	}
 }
