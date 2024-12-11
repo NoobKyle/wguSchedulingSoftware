@@ -44,6 +44,7 @@
 			checkBox1 = new CheckBox();
 			checkBox2 = new CheckBox();
 			dataGridView1 = new DataGridView();
+			monthCalendar1 = new MonthCalendar();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			SuspendLayout();
 			// 
@@ -149,7 +150,7 @@
 			// 
 			// button7
 			// 
-			button7.Location = new Point(549, 520);
+			button7.Location = new Point(543, 385);
 			button7.Name = "button7";
 			button7.Size = new Size(75, 23);
 			button7.TabIndex = 10;
@@ -159,7 +160,7 @@
 			// 
 			// button8
 			// 
-			button8.Location = new Point(682, 520);
+			button8.Location = new Point(676, 385);
 			button8.Name = "button8";
 			button8.Size = new Size(75, 23);
 			button8.TabIndex = 11;
@@ -169,7 +170,7 @@
 			// 
 			// button9
 			// 
-			button9.Location = new Point(821, 520);
+			button9.Location = new Point(815, 385);
 			button9.Name = "button9";
 			button9.Size = new Size(75, 23);
 			button9.TabIndex = 12;
@@ -201,16 +202,25 @@
 			// dataGridView1
 			// 
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView1.Location = new Point(405, 184);
+			dataGridView1.Location = new Point(27, 431);
 			dataGridView1.Name = "dataGridView1";
-			dataGridView1.Size = new Size(608, 312);
+			dataGridView1.Size = new Size(990, 312);
 			dataGridView1.TabIndex = 15;
+			dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+			// 
+			// monthCalendar1
+			// 
+			monthCalendar1.CalendarDimensions = new Size(2, 1);
+			monthCalendar1.Location = new Point(482, 194);
+			monthCalendar1.Name = "monthCalendar1";
+			monthCalendar1.TabIndex = 16;
 			// 
 			// MainScreen
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1041, 571);
+			ClientSize = new Size(1041, 774);
+			Controls.Add(monthCalendar1);
 			Controls.Add(dataGridView1);
 			Controls.Add(checkBox2);
 			Controls.Add(checkBox1);
@@ -254,5 +264,6 @@
 		private CheckBox checkBox1;
 		private CheckBox checkBox2;
 		private DataGridView dataGridView1;
+		private MonthCalendar monthCalendar1;
 	}
 }

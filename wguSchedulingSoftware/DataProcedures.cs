@@ -471,9 +471,35 @@ namespace wguSchedulingSoftware
 		}
 
 
+		public DataTable getAllAppointments()
+		{
+			DataTable dt = new DataTable();
 
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			string query = "Select * from appointment";
+			try
+			{
+				conn.Open();
+				using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+				{
+					adapter.Fill(dt);
 
+				}
 
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+
+			}
+
+			return dt;
+
+		}
 
 
 

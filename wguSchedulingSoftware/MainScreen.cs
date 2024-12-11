@@ -23,6 +23,8 @@ namespace wguSchedulingSoftware
 			currentUser = user;
 
 			DataProcedures data = new DataProcedures();
+			
+			dataGridView1.DataSource = data.getAllAppointments();
 		}
 
 		private void label2_Click(object sender, EventArgs e)
@@ -90,6 +92,16 @@ namespace wguSchedulingSoftware
 			this.Close();
 			ModifyAppointment modifyAppointment = new ModifyAppointment(currentUser);
 			modifyAppointment.Show();
+		}
+
+		private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+		{
+
+		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
 		}
 	}
 }
