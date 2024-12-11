@@ -214,6 +214,8 @@
 			monthCalendar1.Location = new Point(482, 194);
 			monthCalendar1.Name = "monthCalendar1";
 			monthCalendar1.TabIndex = 16;
+			monthCalendar1.DateChanged += monthCalendar1_DateChanged_1;
+			monthCalendar1.DateSelected += monthCalendar1_DateSelected;
 			// 
 			// MainScreen
 			// 

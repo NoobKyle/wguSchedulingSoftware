@@ -501,6 +501,42 @@ namespace wguSchedulingSoftware
 
 		}
 
+		public DataTable getDayAppointments(string day)
+		{
+			DataTable dt = new DataTable();
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			string query = "SELECT * FROM appointment WHERE DATE(start) = @day";
+
+			try
+			{
+				conn.Open();
+
+				using (MySqlCommand cmd = new MySqlCommand(query, conn))
+				{
+					cmd.Parameters.AddWithValue("@day", day);
+
+					using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+					{
+						adapter.Fill(dt);
+
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+
+			}
+
+			return dt;
+
+		}
 
 
 	}
