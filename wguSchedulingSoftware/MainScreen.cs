@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wguSchedulingSoftware.DataModels;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace wguSchedulingSoftware
@@ -23,6 +24,8 @@ namespace wguSchedulingSoftware
 			currentUser = user;
 
 			DataProcedures data = new DataProcedures();
+
+			dataGridView1.DataSource = data.getAllAppointments();
 		}
 
 		private void label2_Click(object sender, EventArgs e)
@@ -90,6 +93,27 @@ namespace wguSchedulingSoftware
 			this.Close();
 			ModifyAppointment modifyAppointment = new ModifyAppointment(currentUser);
 			modifyAppointment.Show();
+		}
+
+		private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+		{
+
+		}
+
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void monthCalendar1_DateChanged_1(object sender, DateRangeEventArgs e)
+		{
+
+		}
+
+		private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+		{	
+			DataProcedures data = new DataProcedures();
+			dataGridView1.DataSource = data.getDayAppointments(e.Start.ToString("yyyy-MM-dd"));
 		}
 	}
 }
