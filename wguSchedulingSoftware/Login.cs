@@ -68,6 +68,18 @@ namespace wguSchedulingSoftware
 				this.Hide();
 				MainScreen mainScreen = new MainScreen(userInfo);
 				mainScreen.Show();
+
+				// Show user appointments in the next 15 minutes.
+				List<Appointment> upcomingAppts = data.checkUserReminders(userInfo.userId);
+				if (upcomingAppts.Count > 0)
+				{
+					foreach (var appt in upcomingAppts)
+					{
+						Reminder apptReminder = new Reminder(appt);
+						apptReminder.Show();
+					}
+				}
+
 			}
 			else
 			{

@@ -539,5 +539,62 @@ namespace wguSchedulingSoftware
 		}
 
 
+
+		public List<Appointment> checkUserReminders(int userId)
+		{
+			List<Appointment> appts = new List<Appointment>();
+			DateTime currentutc = DateTime.UtcNow;
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = " SELECT * FROM appointment WHERE start > @CurrentTime AND start <= DATE_ADD(@CurrentTime, INTERVAL 15 MINUTE)";
+				cmd.Parameters.AddWithValue("@userId", userId);
+				cmd.Parameters.AddWithValue("@currentTime", currentutc);
+				cmd.ExecuteNonQuery();
+
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						appts.Add(new Appointment()
+						{
+							customerId = (int)reader["customerId"],
+							title = reader["title"].ToString(),
+							description = reader["description"].ToString(),
+							location = reader["location"].ToString(),
+							contact = reader["contact"].ToString(),
+							type = reader["type"].ToString(),
+							url = reader["url"].ToString(),
+							start = Convert.ToDateTime(reader["start"]),
+							end = Convert.ToDateTime(reader["end"])
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return appts;
+		}
+
+
+
+
+
+
+
+
+
+
 	}
 }
