@@ -589,7 +589,28 @@ namespace wguSchedulingSoftware
 
 
 
+		public void logUserActivity(string logText)
+		{
+		
+			DirectoryInfo info = new DirectoryInfo(".");
 
+			string logPath = info + "\\Login_History.txt";//<---- change directory
+			if (!File.Exists(logPath))
+			{
+				var file = File.Create(logPath);
+				file.Close();
+				TextWriter textWriter = new StreamWriter(logPath);
+				textWriter.WriteLine(logText);
+				textWriter.Close();
+			}
+			else if (File.Exists(logPath))
+			{
+				using (var textWriter = new StreamWriter(logPath, true))
+				{
+					textWriter.WriteLine(logText);
+				}
+			}
+		}
 
 
 
