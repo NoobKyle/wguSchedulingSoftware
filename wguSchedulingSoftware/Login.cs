@@ -69,6 +69,8 @@ namespace wguSchedulingSoftware
 				MainScreen mainScreen = new MainScreen(userInfo);
 				mainScreen.Show();
 
+				data.logUserActivity("Username: '" + userInfo.username + "'. UserID: " + userInfo.userId + ". Logged in at " + dateTime);
+
 				// Show user appointments in the next 15 minutes.
 				List<Appointment> upcomingAppts = data.checkUserReminders(userInfo.userId);
 				if (upcomingAppts.Count > 0)
