@@ -29,7 +29,16 @@ namespace wguSchedulingSoftware
 
 		private void textBox2_TextChanged(object sender, EventArgs e)
 		{
+			string phonetxt = phonetb.Text;
 
+			string validText = System.Text.RegularExpressions.Regex.Replace(phonetxt, @"[^0-9-]", "");
+
+			if (phonetxt != validText)
+			{
+				phonetb.Text = validText;
+
+				phonetb.SelectionStart = phonetb.Text.Length;
+			}
 		}
 
 		private void button1_Click(object sender, EventArgs e)

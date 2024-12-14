@@ -124,6 +124,7 @@
 			phonetb.Name = "phonetb";
 			phonetb.Size = new Size(180, 23);
 			phonetb.TabIndex = 26;
+			phonetb.TextChanged += phonetb_TextChanged;
 			// 
 			// nametb
 			// 

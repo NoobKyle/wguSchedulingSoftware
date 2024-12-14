@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using wguSchedulingSoftware.DataModels;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace wguSchedulingSoftware
 {
@@ -114,6 +115,20 @@ namespace wguSchedulingSoftware
 			else
 			{
 				label1.Text = "Enter text in all fields";
+			}
+		}
+
+		private void phonetb_TextChanged(object sender, EventArgs e)
+		{
+			string phonetxt = phonetb.Text;
+
+			string validText = System.Text.RegularExpressions.Regex.Replace(phonetxt, @"[^0-9-]", "");
+
+			if (phonetxt != validText)
+			{
+				phonetb.Text = validText;
+
+				phonetb.SelectionStart = phonetb.Text.Length;
 			}
 		}
 	}
