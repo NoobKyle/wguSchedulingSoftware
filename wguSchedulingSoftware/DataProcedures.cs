@@ -553,7 +553,7 @@ namespace wguSchedulingSoftware
 				MySqlCommand cmd = conn.CreateCommand();
 				cmd.CommandText = " SELECT * FROM appointment WHERE start > @CurrentTime AND start <= DATE_ADD(@CurrentTime, INTERVAL 15 MINUTE)";
 				cmd.Parameters.AddWithValue("@userId", userId);
-				cmd.Parameters.AddWithValue("@currentTime", currentutc);
+				cmd.Parameters.AddWithValue("@CurrentTime", currentutc);
 				cmd.ExecuteNonQuery();
 
 				using (MySqlDataReader reader = cmd.ExecuteReader())

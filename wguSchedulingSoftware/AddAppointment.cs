@@ -24,7 +24,10 @@ namespace wguSchedulingSoftware
 
 			DataProcedures data = new DataProcedures();
 
+			startdatetb.Format = DateTimePickerFormat.Time;
+			endDatetb.Format = DateTimePickerFormat.Time;
 
+			
 		}
 
 		private void label11_Click(object sender, EventArgs e)

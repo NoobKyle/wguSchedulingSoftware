@@ -20,7 +20,38 @@ namespace wguSchedulingSoftware
 			DataProcedures data = new DataProcedures();
 			string customerName = data.getCustomerInformation(appt.customerId).customerName;
 
-			MessageBox.Show(appt.title);
+
+			label11.Text = customerName;
+			label12.Text = appt.title;
+			label13.Text = appt.description;
+			label14.Text = appt.location;
+			label15.Text = appt.contact;
+			label16.Text = appt.type;
+			label17.Text = appt.url;
+			label18.Text = appt.start.ToString();
+			label19.Text = appt.end.ToString();
+		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
+
+
+
+// customer name
+// title
+// description
+//location
+//contact
+//type
+//url
+//start
+//end
