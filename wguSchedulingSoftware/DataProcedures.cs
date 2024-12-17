@@ -613,8 +613,151 @@ namespace wguSchedulingSoftware
 		}
 
 
+		public List<string> returnApptTypesMonth(int userId, int month)
+		{
+			List<string> appts = new List<string>();
+			DateTime currentUtc = DateTime.UtcNow;
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "SELECT type FROM appointment WHERE userId = @userId and MONTH(start) = @month";
+				cmd.Parameters.AddWithValue("@userId", userId);
+				cmd.Parameters.AddWithValue("@month", month);
+				cmd.ExecuteNonQuery();
+
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						appts.Add(reader["type"].ToString());
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return appts;
+		}
 
 
+		public List<Appointment> returnUserSchedule(int userId)
+		{
+			List<Appointment> appts = new List<Appointment>();
+			DateTime currentUtc = DateTime.UtcNow;
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "SELECT start, end FROM appointment WHERE userId = @userId";
+				cmd.Parameters.AddWithValue("@userId", userId);
+				cmd.ExecuteNonQuery();
+
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						appts.Add(new Appointment()
+						{
+							start = Convert.ToDateTime(reader["start"]),
+							end = Convert.ToDateTime(reader["end"])
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return appts;
+		}
+
+
+		public List<int> returnDistinctConsultantsWithAppts()
+		{
+			List<int> userIds = new List<int>();
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "SELECT DISTINCT userId FROM appointment";
+				cmd.ExecuteNonQuery();
+
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						userIds.Add((int)reader["userId"]);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return userIds;
+		}
+
+
+		public List<Customer> returnCustomerList()
+		{
+			List<Customer> customer= new List<Customer>();
+
+			MySqlConnection conn = new MySqlConnection(connectionString);
+			try
+			{
+				conn.Open();
+				MySqlCommand cmd = conn.CreateCommand();
+				cmd.CommandText = "SELECT customerId, customerName, active, DATE(createDate) from customer";
+				cmd.ExecuteNonQuery();
+
+				using (MySqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						customer.Add(new Customer()
+						{
+							customerId = (int)reader["customerId"],
+							customerName = reader["customerName"].ToString(),
+							active = (bool)reader["active"]
+						});
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return customer;
+		}
 
 
 	}

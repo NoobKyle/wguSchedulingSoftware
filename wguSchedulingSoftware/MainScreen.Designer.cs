@@ -41,10 +41,9 @@
 			button7 = new Button();
 			button8 = new Button();
 			button9 = new Button();
-			checkBox1 = new CheckBox();
-			checkBox2 = new CheckBox();
 			dataGridView1 = new DataGridView();
 			monthCalendar1 = new MonthCalendar();
+			label5 = new Label();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			SuspendLayout();
 			// 
@@ -129,6 +128,7 @@
 			numberOfAppointmentsbtn.TabIndex = 7;
 			numberOfAppointmentsbtn.Text = "Number Of Appointments";
 			numberOfAppointmentsbtn.UseVisualStyleBackColor = true;
+			numberOfAppointmentsbtn.Click += numberOfAppointmentsbtn_Click;
 			// 
 			// consultantsSchedulesbtn
 			// 
@@ -138,6 +138,7 @@
 			consultantsSchedulesbtn.TabIndex = 8;
 			consultantsSchedulesbtn.Text = "Consultant Schedules";
 			consultantsSchedulesbtn.UseVisualStyleBackColor = true;
+			consultantsSchedulesbtn.Click += consultantsSchedulesbtn_Click;
 			// 
 			// customerReportsbtn
 			// 
@@ -147,10 +148,11 @@
 			customerReportsbtn.TabIndex = 9;
 			customerReportsbtn.Text = "Customer Reports";
 			customerReportsbtn.UseVisualStyleBackColor = true;
+			customerReportsbtn.Click += customerReportsbtn_Click;
 			// 
 			// button7
 			// 
-			button7.Location = new Point(543, 385);
+			button7.Location = new Point(551, 367);
 			button7.Name = "button7";
 			button7.Size = new Size(75, 23);
 			button7.TabIndex = 10;
@@ -160,7 +162,7 @@
 			// 
 			// button8
 			// 
-			button8.Location = new Point(676, 385);
+			button8.Location = new Point(684, 367);
 			button8.Name = "button8";
 			button8.Size = new Size(75, 23);
 			button8.TabIndex = 11;
@@ -170,34 +172,13 @@
 			// 
 			// button9
 			// 
-			button9.Location = new Point(815, 385);
+			button9.Location = new Point(823, 367);
 			button9.Name = "button9";
 			button9.Size = new Size(75, 23);
 			button9.TabIndex = 12;
 			button9.Text = "Delete";
 			button9.UseVisualStyleBackColor = true;
 			button9.Click += button9_Click;
-			// 
-			// checkBox1
-			// 
-			checkBox1.AutoSize = true;
-			checkBox1.Location = new Point(588, 163);
-			checkBox1.Name = "checkBox1";
-			checkBox1.Size = new Size(83, 19);
-			checkBox1.TabIndex = 13;
-			checkBox1.Text = "Week View";
-			checkBox1.UseVisualStyleBackColor = true;
-			// 
-			// checkBox2
-			// 
-			checkBox2.AutoSize = true;
-			checkBox2.Location = new Point(746, 163);
-			checkBox2.Name = "checkBox2";
-			checkBox2.Size = new Size(90, 19);
-			checkBox2.TabIndex = 14;
-			checkBox2.Text = "Month View";
-			checkBox2.UseVisualStyleBackColor = true;
-			checkBox2.CheckedChanged += checkBox2_CheckedChanged;
 			// 
 			// dataGridView1
 			// 
@@ -211,21 +192,31 @@
 			// monthCalendar1
 			// 
 			monthCalendar1.CalendarDimensions = new Size(2, 1);
-			monthCalendar1.Location = new Point(482, 194);
+			monthCalendar1.Location = new Point(489, 163);
 			monthCalendar1.Name = "monthCalendar1";
 			monthCalendar1.TabIndex = 16;
 			monthCalendar1.DateChanged += monthCalendar1_DateChanged_1;
 			monthCalendar1.DateSelected += monthCalendar1_DateSelected;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			label5.Location = new Point(27, 408);
+			label5.Name = "label5";
+			label5.Size = new Size(105, 20);
+			label5.TabIndex = 21;
+			label5.Text = "Appointments";
+			label5.Click += label5_Click;
 			// 
 			// MainScreen
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1041, 774);
+			Controls.Add(label5);
 			Controls.Add(monthCalendar1);
 			Controls.Add(dataGridView1);
-			Controls.Add(checkBox2);
-			Controls.Add(checkBox1);
 			Controls.Add(button9);
 			Controls.Add(button8);
 			Controls.Add(button7);
@@ -263,9 +254,8 @@
 		private Button button7;
 		private Button button8;
 		private Button button9;
-		private CheckBox checkBox1;
-		private CheckBox checkBox2;
 		private DataGridView dataGridView1;
 		private MonthCalendar monthCalendar1;
+		private Label label5;
 	}
 }
