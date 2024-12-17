@@ -111,9 +111,32 @@ namespace wguSchedulingSoftware
 		}
 
 		private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
-		{	
+		{
 			DataProcedures data = new DataProcedures();
 			dataGridView1.DataSource = data.getDayAppointments(e.Start.ToString("yyyy-MM-dd"));
+		}
+
+		private void numberOfAppointmentsbtn_Click(object sender, EventArgs e)
+		{
+			Reports reports = new Reports(currentUser, 1);
+			reports.Show();
+		}
+
+		private void consultantsSchedulesbtn_Click(object sender, EventArgs e)
+		{
+			Reports reports = new Reports(currentUser, 2);
+			reports.Show();
+		}
+
+		private void customerReportsbtn_Click(object sender, EventArgs e)
+		{
+			Reports reports = new Reports(currentUser, 3);
+			reports.Show();
+		}
+
+		private void label5_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
