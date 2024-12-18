@@ -120,4 +120,4 @@ This application is designed to manage customer records and appointments. It inc
 
 ---
 
-This document provides an overview of the application's functionality, setup, and usage. For further assistance, refer to the application's source code or contact the development team.
+This document provides an overview of the application's functionality, setup, and usage. For further assistance, refer to the application's source code.
