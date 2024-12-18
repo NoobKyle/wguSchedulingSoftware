@@ -83,10 +83,11 @@ namespace wguSchedulingSoftware
 			{
 				//lambda function.
 				List<Appointment> consultantAppts = data.returnUserSchedule(varid);
-				resultString += "\n\nAppointments for USER :  " + varid + Environment.NewLine + Environment.NewLine;
+				resultString += "\n---------------------------" + Environment.NewLine;
+				resultString += "\n\nAPPOINTMENT FOR USER :  " + varid + Environment.NewLine + Environment.NewLine;
 				consultantAppts.ForEach(appt =>
 				{//lambda used to make foreach simpler
-					resultString += "\nStart: " + appt.start + "   End: " + appt.end + Environment.NewLine;
+					resultString += "\nStart: " + appt.start + "   End: " + appt.end + Environment.NewLine + Environment.NewLine;
 				});
 			});
 
